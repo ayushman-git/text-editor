@@ -1,5 +1,7 @@
 <template>
-  <div>{{ text }}</div>
+  <div v-if="wordsCounted > 1">Words: {{ wordsCounted }}
+  </div>
+  
 </template>
 
 <script>
@@ -14,16 +16,20 @@ export default {
     data() {
       return {
         str: "",
+        wordsCounted: "",
       }
     },
 
-  watch: {
+
+  computed: {
     countWords() {
-      this.str = this.text;
-      this.str = this.str.replace(/(^\s*)|(\s*$)/gi, "");
-      this.str = this.str.replace(/[ ]{2,}/gi, " ");
-      this.str = this.str.replace(/\n /, "\n");
-      this.str = this.str.split(" ").length;
+      let vm = this;
+      vm.str = vm.text;
+      vm.str = vm.str.replace(/(^\s*)|(\s*$)/gi, "");
+      vm.str = vm.str.replace(/[ ]{2,}/gi, " ");
+      vm.str = vm.str.replace(/\n /, "\n");
+      vm.wordsCounted = vm.str.split(" ").length;
+      return vm.wordsCounted;
     }
   }
 };

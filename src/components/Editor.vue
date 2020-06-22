@@ -2,14 +2,16 @@
   <div>
     <textarea v-model="text" type="text" autofocus />
     <WordCount class="wordCount" :text="text" />
+    <LetterCount class="letterCount" :text="text" />
   </div>
 </template>
 
 <script>
 import WordCount from './WordCount'
+import LetterCount from './LetterCount'
 export default {
   name: "Editor",
-  components: { WordCount },
+  components: { WordCount, LetterCount },
 
   data() {
     return {
@@ -48,6 +50,15 @@ div textarea {
 }
 
 .wordCount {
+  color: white;
   position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.letterCount {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  right: 100px;
 }
 </style>
