@@ -5,7 +5,8 @@
       v-model="text"
       v-on:keydown.ctrl.down="decreaseFont"
       v-on:keydown.ctrl.up="increaseFont"
-      :style="{'font-size': fontSize+'px'}"
+      v-on:keydown.ctrl.alt.w="changePadding"
+      :style="{'font-size': fontSize+'px', 'padding-left': leftPadding+'%'}"
       type="text"
       autofocus
     />
@@ -26,7 +27,8 @@ export default {
   data() {
     return {
       text: "",
-      fontSize: 14
+      fontSize: 14,
+      leftPadding: 2
     };
   },
   methods: {
@@ -35,6 +37,12 @@ export default {
     },
     increaseFont() {
       if (this.fontSize <= 26) this.fontSize += 2;
+    },
+    changePadding() {
+      console.log('Check')
+      if (this.leftPadding === 2) this.leftPadding = 25;
+      else this.leftPadding = 2;
+      console.log(Date())
     }
   }
 };
@@ -42,6 +50,11 @@ export default {
 
 <style lang="scss" scoped>
 $fontSize: 14px;
+
+div {
+  width: 100%;
+  overflow: hidden;
+}
 
 div textarea {
   position: relative;
