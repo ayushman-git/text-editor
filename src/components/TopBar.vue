@@ -30,6 +30,9 @@ export default {
 
 <style scoped>
 input {
+  display: grid;
+  position: absolute;
+  left: 0;
   padding: 3px;
   font-size: 16px;
   letter-spacing: 2px;

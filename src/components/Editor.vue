@@ -11,18 +11,16 @@
       autofocus
     />
     <TopBar class="topBar" />
-    <WordCount class="wordCount" :text="text" />
-    <LetterCount class="letterCount" :text="text" />
+    <BottomBar :text="text" />
   </div>
 </template>
 
 <script>
-import WordCount from "./WordCount";
-import LetterCount from "./LetterCount";
+import BottomBar from './BottomBar'
 import TopBar from "./TopBar";
 export default {
   name: "Editor",
-  components: { WordCount, LetterCount, TopBar },
+  components: { BottomBar, TopBar },
 
   data() {
     return {
@@ -42,7 +40,6 @@ export default {
       console.log('Check')
       if (this.leftPadding === 2) this.leftPadding = 25;
       else this.leftPadding = 2;
-      console.log(Date())
     }
   }
 };
@@ -52,48 +49,35 @@ export default {
 $fontSize: 14px;
 
 div {
-  width: 100%;
+  width: 100vh;
   overflow: hidden;
 }
 
 div textarea {
   position: relative;
   font-size: $fontSize;
-  color: white;
-  height: 100vh;
-  width: 100%;
+  color: black;
+  // height: 100vh;
+  // width: 100%;
   outline: none;
   border: none;
   margin: 0;
   padding: 30px 10px 0px 10px;
   resize: none;
   font-family: "Courier New", Courier, monospace;
-  background: #0f2027; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #000000,
-    #203a43,
-    #0f2027
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #2c5364,
-    #203a43,
-    #0f2027
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.wordCount {
-  color: white;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-.letterCount {
-  color: white;
-  position: absolute;
-  bottom: 0;
-  right: 100px;
+  background:transparent;
+  // background: -webkit-linear-gradient(
+  //   to right,
+  //   #000000,
+  //   #203a43,
+  //   #0f2027
+  // ); /* Chrome 10-25, Safari 5.1-6 */
+  // background: linear-gradient(
+  //   to right,
+  //   #2c5364,
+  //   #203a43,
+  //   #0f2027
+  // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .topBar {
